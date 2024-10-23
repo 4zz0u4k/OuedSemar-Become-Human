@@ -9,7 +9,7 @@ from langchain.chains import LLMChain
 load_dotenv()
 
 MODEL_TEMP = 0.7
-
+MAX_TURNS = 10
 class StoryService:
     def __init__(self):
         self.model = ChatGoogleGenerativeAI(
@@ -22,7 +22,7 @@ class StoryService:
         self.current_story = None
         self.story_ended = False
         self.story_turns = 0
-        self.MAX_TURNS = 3  # Maximum story turns before forced ending
+        self.MAX_TURNS = MAX_TURNS  # Maximum story turns before forced ending
         
     def _parse_response(self, response: str) -> Dict:
         """Parse the LLM response into a structured format."""
